@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class City {
@@ -16,6 +17,8 @@ public class City {
 	private String cityDescription;
 	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Comment> comment;
+	@OneToOne(mappedBy = "city")
+	private Airport airport;
 
 	public String getName() {
 		return name;
@@ -51,8 +54,8 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [name=" + name + ", country=" + country + ", cityDescription=" + cityDescription + ", comment=" + comment
-				+ "]";
+		return "City [name=" + name + ", country=" + country + ", cityDescription=" + cityDescription + ", comment="
+				+ comment + "]";
 	}
 
 	@Override
@@ -87,7 +90,7 @@ public class City {
 		return true;
 	}
 
-	public boolean valid() {
+	public boolean validate() {
 		if (getName().isEmpty() || getCountry().isEmpty() || getCityDescription().isEmpty()) {
 			return false;
 		} else {

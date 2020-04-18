@@ -1,96 +1,33 @@
 package com.flightadvisor.model;
 
-public class Airline extends BasicAirline {
+public class Airline {
 
-	private String name;
-	private City city;
-	private double latitude;
-	private double longitude;
-	private int altitude;
-	private int timezone;
-	private String DST;
-	private String tz;
-	private String type;
-	private String source;
+	private String IATACode;
+	private String ICAOCode;
+	private Integer id;
 
-	public String getName() {
-		return name;
+	public String getIATACode() {
+		return IATACode;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setIATACode(String iATACode) {
+		IATACode = iATACode;
 	}
 
-	public City getCity() {
-		return city;
+	public String getICAOCode() {
+		return ICAOCode;
 	}
 
-	public void setCity(City city) {
-		this.city = city;
+	public void setICAOCode(String iCAOCode) {
+		ICAOCode = iCAOCode;
 	}
 
-	public double getLatitude() {
-		return latitude;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public int getAltitude() {
-		return altitude;
-	}
-
-	public void setAltitude(int altitude) {
-		this.altitude = altitude;
-	}
-
-	public int getTimezone() {
-		return timezone;
-	}
-
-	public void setTimezone(int timezone) {
-		this.timezone = timezone;
-	}
-
-	public String getDST() {
-		return DST;
-	}
-
-	public void setDST(String dST) {
-		DST = dST;
-	}
-
-	public String getTz() {
-		return tz;
-	}
-
-	public void setTz(String tz) {
-		this.tz = tz;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }
