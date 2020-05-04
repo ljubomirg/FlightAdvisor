@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,7 +21,7 @@ public class Airport extends BasicAirport {
 	private static final String TZ_REGEX = "[A-Z][a-z]+/[A-Z][a-z]+([ |_][A-Z][a-z]+)?";
 
 	private String name;
-	@OneToOne()
+	@ManyToOne(cascade = CascadeType.ALL)
 	private City city;
 	private Double latitude;
 	private Double longitude;
@@ -30,7 +31,7 @@ public class Airport extends BasicAirport {
 	private String tz;
 	private String type;
 	private String source;
-
+	
 	public String getName() {
 		return name;
 	}
@@ -154,21 +155,14 @@ public class Airport extends BasicAirport {
 	@Override
 	public boolean validate() {
 		boolean result = super.validate();
-		if (result 
-				&& name != null 
-				&& validateCity() 
-				&& longitude != null 
-				&& latitude != null 
-				&& altitude != null
-				&& (DST != null && DST.length() == 1) 
-				&& (tz != null && Pattern.matches(TZ_REGEX, tz))
-				&& type != null
+		if (result && name != null && validateCity() && longitude != null && latitude != null && altitude != null
+				&& (DST != null && DST.length() == 1) && (tz != null && Pattern.matches(TZ_REGEX, tz)) && type != null
 				&& source != null) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	private static String seperateString(String value) {
 		String[] values = value.split(AIRPORT_STRING);
 		if (values != null && values.length == 2) {
@@ -204,7 +198,6 @@ public class Airport extends BasicAirport {
 
 	public static List<Airport> readFromFile(MultipartFile file) {
 		List<Airport> airportList = new ArrayList<>();
-
 		try {
 			String line;
 			BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()));

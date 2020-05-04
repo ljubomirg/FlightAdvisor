@@ -4,21 +4,42 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
+import org.springframework.stereotype.Component;
 
 @Entity
+@Component
 public class City {
 
 	@Id
 	private String name;
 	private String country;
 	private String cityDescription;
-	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "city", cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private List<Comment> comment;
-	@OneToOne(mappedBy = "city")
-	private Airport airport;
+	@OneToMany(mappedBy = "city")
+	private List<Airport> airport;
+
+	public City() {
+	}
+
+	public List<Airport> getAirport() {
+		return airport;
+	}
+
+	public void setAirport(List<Airport> airport) {
+		this.airport = airport;
+	}
+
+	public City(String name, String country, String cityDescription) {
+		super();
+		this.name = name;
+		this.country = country;
+		this.cityDescription = cityDescription;
+	}
 
 	public String getName() {
 		return name;
@@ -91,11 +112,13 @@ public class City {
 	}
 
 	public boolean validate() {
-		if (getName().isEmpty() || getCountry().isEmpty() || getCityDescription().isEmpty()) {
-			return false;
-		} else {
-			return true;
+		try {
+			if (!getName().isEmpty() && !getCountry().isEmpty() && !getCityDescription().isEmpty()) {
+				return true;
+			}
+		} catch (NullPointerException e) {
 		}
+		return false;
 	}
 
 }

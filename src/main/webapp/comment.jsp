@@ -9,8 +9,10 @@
 <body>
 	<form action="comment">
 		<input type="text" name="commentDescription"
-			value="${comment.commentDescription}"> <input type="hidden"
-			name="id" value="${comment.id}"> <input type="submit"
+			value="${description}"> 
+			<input type="hidden" name="id" value="${id}"> 
+			<input type="hidden" name="cityName" value="${cityName}"> 
+			<input type="submit"
 			name="button" value="${button}">
 	</form>
 

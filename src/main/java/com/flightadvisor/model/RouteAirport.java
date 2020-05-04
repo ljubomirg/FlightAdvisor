@@ -4,24 +4,29 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Airline {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class RouteAirport {
 
 	@Id
 	private Integer id;
 	private String IATACode;
 	private String ICAOCode;
-	@OneToMany(mappedBy = "airline")
-	private List<Route> route;
+	@OneToMany(mappedBy = "sourceAirport")
+	private List<Route> sourceRoute;
+	@OneToMany(mappedBy = "destinationAirport")
+	private List<Route> destinationRoute;
 
 	public String getIATACode() {
 		return IATACode;
 	}
 
-	public void setIATACode(String iATACode) {
-		IATACode = iATACode;
+	public void setIATACode(String IATACode) {
+		this.IATACode = IATACode;
 	}
 
 	public String getICAOCode() {
@@ -36,34 +41,34 @@ public class Airline {
 		return id;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public void setId(String id) {
 		try {
 			this.id = Integer.parseInt(id);
 		} catch (NumberFormatException nfe) {
 		}
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
+	
 	public void setIATAOrICAOCode(String code) {
-		if (code != null && code.length() == 2) {
+		if (code != null && code.length() == 3) {
 			setIATACode(code);
-		} else if (code != null && code.length() == 3) {
+		} else if (code != null && code.length() == 4) {
 			setICAOCode(code);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "Airline [id=" + id + ", IATACode=" + IATACode + ", ICAOCode=" + ICAOCode + "]";
+		return "RouteAirport [id=" + id + ", IATACode=" + IATACode + ", ICAOCode=" + ICAOCode + "]";
 	}
 
 	public boolean validate() {
 		if (id != null 
-				&& ((this.IATACode != null && this.IATACode.length() == 2)
-						|| (this.ICAOCode != null && this.ICAOCode.length() == 3))) {
+				&& (this.IATACode != null && (this.IATACode.equals("Null") || this.IATACode.length() == 3))
+				&& (this.ICAOCode != null && (this.ICAOCode.equals("Null") || this.ICAOCode.length() == 4))) {
 			return true;
 		}
 		return false;
@@ -88,7 +93,7 @@ public class Airline {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Airline other = (Airline) obj;
+		RouteAirport other = (RouteAirport) obj;
 		if (id == null) {
 			if (other.id != null) {
 				return false;

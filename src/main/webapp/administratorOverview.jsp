@@ -19,11 +19,11 @@
 			</tr>
 			<tr>
 				<td>Description:</td>
-				<td><input type="text" name="description"></td>
+				<td><input type="text" name="cityDescription"></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="Add city"></td>
+				<td><input type="submit" value="Add city"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -31,9 +31,17 @@
 			</tr>
 		</table>
 	</form>
-	<h3>Upload a Airport:</h3>
-	<form action="uploadFile" method="post" enctype="multipart/form-data">
-		<input type="file" name="file"> <input type="submit" value="Upload">
+	<h3>Upload a Airports:</h3>
+	<form action="uploadAirports" method="post"
+		enctype="multipart/form-data">
+		<input type="file" name="file"> <input type="submit"
+			value="Upload">
 	</form>
+	<h3>Upload a Routes:</h3>
+	<form action="uploadRoutes" method="post" enctype="multipart/form-data">
+		<input type="file" name="file"> <input type="submit"
+			value="Upload">
+	</form>
+	<h4>${uploadMessage}</h4>
 </body>
 </html>

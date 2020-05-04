@@ -7,8 +7,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries(value={
+	    @NamedQuery(name="Comment.FOR_CITY", query=
+	        "SELECT c FROM Comment c WHERE c.city = :city order by createdDate DESC"
+	    )
+	})
 public class Comment {
 
 	@Id
@@ -18,7 +25,7 @@ public class Comment {
 	private Date createdDate;
 	private Date modifiedDate;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private City city;
 
 //	private User user;

@@ -12,12 +12,24 @@
 	<table>
 		<c:forEach items="${cities}" var="city">
 			<tr>
+				<td><p></p></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+			</tr>
+			<tr>
 				<td>Name: <c:out value="${city.name}" /></td>
 				<td>Country: <c:out value="${city.country}" /></td>
 				<td>Description: <c:out value="${city.cityDescription}" /></td>
 			</tr>
 			<tr>
 				<td>Comments:</td>
+				<td>
+					<form action="addComment">
+						<input type="hidden" value="${city.name}" name="cityName">
+						<input type="submit" value="Add comment">
+					</form>
+				</td>
 			</tr>
 			<c:forEach items="${city.comment}" var="comment">
 				<tr>
@@ -28,20 +40,14 @@
 				<tr>
 					<td>
 						<form action="deleteComment">
-							<input type="hidden" value=${comment.id} name="id"> <input
+							<input type="hidden" value="${comment.id}" name="id"> <input
 								type="submit" value="Delete comment">
 						</form>
 					</td>
 					<td>
 						<form action="updateComment">
-							<input type="hidden" value=${comment.id} name="id"> <input
+							<input type="hidden" value="${comment.id}" name="id"> <input
 								type="submit" value="Update comment">
-						</form>
-					</td>
-					<td>
-						<form action="addComment">
-							<input type="hidden" value=${city.name} name="cityName">
-							<input type="submit" value="Add comment">
 						</form>
 					</td>
 				</tr>

@@ -2,8 +2,11 @@ package com.flightadvisor.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class BasicAirport {
 
 	@Id
@@ -39,6 +42,14 @@ public class BasicAirport {
 		try {
 			this.id = Integer.parseInt(id);
 		} catch (NumberFormatException nfe) {
+		}
+	}
+	
+	public void setIATAOrICAOCode(String code) {
+		if (code != null && code.length() == 3) {
+			setIATACode(code);
+		} else if (code != null && code.length() == 4) {
+			setICAOCode(code);
 		}
 	}
 

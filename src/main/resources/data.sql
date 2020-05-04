@@ -1,10 +1,18 @@
-insert into user values ('RegularUser', 'ljubo', 'Ljubomir', 'Grubljesic', 's', 's');
-insert into user values ('Administrator', 'marko', 'Marko', 'Ikic', 'm', 'm');
+insert into user values ('RegularUser', 'ljubo', 'Ljubomir', 'Grubljesic', 'bvmKm0gOO5U=', 's');
+insert into user values ('Administrator', 'marko', 'Marko', 'Ikic', 'e+J8PMpS+mY=', 'm');
 insert into city values ('Banja Luka', 'RS', 'Veliki grad');
 insert into city values ('Prijedor', 'RS', 'Manji grad');
 insert into city values ('Novi Grad', 'RS', 'Mali grad');
 insert into city values ('Mrkonic Grad', 'RS', 'Mali grad');
-insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, MODIFIED_DATE, CITY_NAME)  values(parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'First comment',parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'Prijedor');
-insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, MODIFIED_DATE, CITY_NAME)  values(parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'Second comment',parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'Novi Grad');
-insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, MODIFIED_DATE, CITY_NAME)  values(parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'Third comment',parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'Prijedor');
-
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'First comment', 'Prijedor');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'Second comment', 'Novi Grad');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), 'Third comment', 'Prijedor');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:41:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '1111', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:42:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '22222', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:43:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '33333', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:44:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '444444', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:45:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '55555', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:46:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '6666', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:47:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '777777', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:48:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '8888888', 'Banja Luka');
+insert into comment(CREATED_DATE, COMMENT_DESCRIPTION, CITY_NAME)  values(parsedatetime('17-09-2012 18:49:52.690', 'dd-MM-yyyy hh:mm:ss.SS'), '9999999', 'Banja Luka');
